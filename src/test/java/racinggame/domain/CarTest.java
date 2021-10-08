@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.CustomParameterizedTest;
 
@@ -32,5 +33,18 @@ class CarTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Car(input))
                 .withMessageMatching("자동차 이름은 공백을 제외한 1자 이상, 5자 이하로 입력해야 합니다.");
+    }
+
+    @Test
+    @DisplayName("자동차를 전진한다.")
+    void moveForward() {
+        // given
+        Car car = new Car("car1");
+
+        // when
+        car.moveForward();
+
+        // then
+        assertThat(car.getCarPosition()).isEqualTo(1);
     }
 }
