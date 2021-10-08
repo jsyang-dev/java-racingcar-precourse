@@ -43,4 +43,17 @@ class CarsTest {
             );
         }
     }
+
+    @Test
+    @DisplayName("자동차 경주 우승 자동차를 조회한다.")
+    void getWinners() {
+        // given
+        cars.action();
+
+        // when
+        Winners winners = cars.getWinners();
+
+        // then
+        assertThat(winners.getCarCount()).isGreaterThan(0).isLessThanOrEqualTo(cars.getCarCount());
+    }
 }

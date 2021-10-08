@@ -13,12 +13,16 @@ public class Cars {
         cars = mapCars(nameText);
     }
 
-    public Car getCar(int index) {
+    Car getCar(int index) {
         return cars.get(index);
     }
 
     public int getCarCount() {
         return cars.size();
+    }
+
+    public Winners getWinners() {
+        return new Winners(cars);
     }
 
     public void action() {

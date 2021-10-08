@@ -21,4 +21,16 @@ public class Car {
     public void action(ActionType actionType) {
         carPosition.action(actionType);
     }
+
+    public boolean isAhead(Car car) {
+        return this.getCarPosition() > car.getCarPosition();
+    }
+
+    public boolean isAheadPosition(Winners winners) {
+        return this.getCarPosition() > winners.getPosition();
+    }
+
+    public boolean isBehindPosition(Winners winners) {
+        return this.getCarPosition() < winners.getPosition();
+    }
 }
