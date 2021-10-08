@@ -1,20 +1,46 @@
 package racinggame.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("자동차 세트 도메인 테스트")
-public class CarsTest {
+class CarsTest {
+
+    private Cars cars;
+
+    @BeforeEach
+    void setUp() {
+        cars = new Cars("car1,car2,car3");
+    }
 
     @Test
     @DisplayName("자동차 세트를 생성한다.")
     void constructor() {
-        // when
-        Cars cars = new Cars("car1,car2,car3");
+        assertThat(cars.getCarCount()).isEqualTo(3);
+    }
 
-        // then
-        assertThat(cars.getSize()).isEqualTo(3);
+    @Test
+    @DisplayName("자동차들의 행동을 결정한다.")
+    void action() {
+        try (MockedStatic<CarAction> mockedStatic = Mockito.mockStatic(CarAction.class)) {
+            // given
+            mockedStatic.when(CarAction::getActionType).thenReturn(ActionType.FORWARD);
+
+            // when
+            cars.action();
+
+            // then
+            assertAll(
+                    () -> assertThat(cars.getCar(0).getCarPosition()).isEqualTo(1),
+                    () -> assertThat(cars.getCar(1).getCarPosition()).isEqualTo(1),
+                    () -> assertThat(cars.getCar(2).getCarPosition()).isEqualTo(1)
+            );
+        }
     }
 }

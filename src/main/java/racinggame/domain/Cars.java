@@ -13,8 +13,18 @@ public class Cars {
         cars = mapCars(nameText);
     }
 
-    public int getSize() {
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
+
+    public int getCarCount() {
         return cars.size();
+    }
+
+    public void action() {
+        for (Car car : cars) {
+            car.action(CarAction.getActionType());
+        }
     }
 
     private List<Car> mapCars(String nameText) {
