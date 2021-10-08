@@ -10,9 +10,13 @@ public class CarAction {
 
     public static ActionType getActionType() {
         int number = Randoms.pickNumberInRange(MIN_OF_RANGE, MAX_OF_RANGE);
-        if (number >= FORWARD_START_VALUE) {
+        if (isForwardNumber(number)) {
             return ActionType.FORWARD;
         }
         return ActionType.STOP;
+    }
+
+    private static boolean isForwardNumber(int number) {
+        return number >= FORWARD_START_VALUE;
     }
 }

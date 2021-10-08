@@ -10,11 +10,11 @@ public class Car {
         this.carPosition = new CarPosition();
     }
 
-    public String getCarName() {
+    String getCarName() {
         return carName.getName();
     }
 
-    public int getCarPosition() {
+    int getCarPosition() {
         return carPosition.getPosition();
     }
 

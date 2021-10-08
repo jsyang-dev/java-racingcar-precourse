@@ -39,9 +39,13 @@ public class Winners {
             return;
         }
 
+        clearWhenAheadPosition(candidateCar);
+        cars.add(candidateCar);
+    }
+
+    private void clearWhenAheadPosition(Car candidateCar) {
         if (candidateCar.isAheadPosition(this)) {
             cars.clear();
         }
-        cars.add(candidateCar);
     }
 }

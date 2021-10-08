@@ -13,13 +13,17 @@ public class CarName {
         this.name = trimmedName;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
     private void checkLength(String name) {
-        if (name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
+        if (isAvailable(name)) {
             throw new IllegalArgumentException("자동차 이름은 공백을 제외한 1자 이상, 5자 이하로 입력해야 합니다.");
         }
+    }
+
+    private boolean isAvailable(String name) {
+        return name.length() < MIN_LENGTH || name.length() > MAX_LENGTH;
     }
 }

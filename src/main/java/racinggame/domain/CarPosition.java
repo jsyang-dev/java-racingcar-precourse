@@ -4,7 +4,7 @@ public class CarPosition {
 
     private int position;
 
-    public int getPosition() {
+    int getPosition() {
         return position;
     }
 
