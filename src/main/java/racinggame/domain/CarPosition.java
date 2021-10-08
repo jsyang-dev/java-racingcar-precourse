@@ -11,4 +11,8 @@ public class CarPosition {
     public void moveForward() {
         position++;
     }
+
+    public void action(ActionType actionType) {
+        position += actionType.getMove();
+    }
 }

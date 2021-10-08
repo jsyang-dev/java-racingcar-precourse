@@ -36,13 +36,13 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차를 전진한다.")
-    void moveForward() {
+    @DisplayName("자동차를 움직인다.")
+    void action() {
         // given
         Car car = new Car("car1");
 
         // when
-        car.moveForward();
+        car.action(ActionType.FORWARD);
 
         // then
         assertThat(car.getCarPosition()).isEqualTo(1);
