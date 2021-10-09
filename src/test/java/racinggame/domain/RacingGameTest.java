@@ -25,7 +25,7 @@ class RacingGameTest {
     @DisplayName("경주 게임을 생성한다.")
     void constructor() {
         // when
-        RacingGame racingGame = new RacingGame(cars, 1);
+        RacingGame racingGame = new RacingGame(cars, new AttemptCount(1));
 
         // then
         assertThat(racingGame).isNotNull();
@@ -36,7 +36,7 @@ class RacingGameTest {
     void constructorException() {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new RacingGame(cars, 0))
+                .isThrownBy(() -> new RacingGame(cars, new AttemptCount(0)))
                 .withMessageMatching("시도 횟수는 1 이상으로 입력해야 합니다.");
     }
 
@@ -49,7 +49,7 @@ class RacingGameTest {
         when(mockCars.getWinners()).thenReturn(new Winners(Collections.singletonList(car)));
 
         int count = 3;
-        RacingGame racingGame = new RacingGame(mockCars, count);
+        RacingGame racingGame = new RacingGame(mockCars, new AttemptCount(count));
 
         // when
         Winners winners = racingGame.start();

@@ -5,9 +5,9 @@ public class RacingGame {
     private final Cars cars;
     private final AttemptCount attemptCount;
 
-    public RacingGame(Cars cars, int count) {
+    public RacingGame(Cars cars, AttemptCount attemptCount) {
         this.cars = cars;
-        this.attemptCount = new AttemptCount(count);
+        this.attemptCount = attemptCount;
     }
 
     public Winners start() {
