@@ -3,8 +3,10 @@ package racinggame.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import racinggame.CustomParameterizedTest;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +24,18 @@ class CarsTest {
     @Test
     @DisplayName("자동차 세트를 생성한다.")
     void constructor() {
+        // when
         assertThat(cars.getCarCount()).isEqualTo(3);
+    }
+
+    @CustomParameterizedTest
+    @ValueSource(strings = {" ", ",", "car1,", ",car1"})
+    @DisplayName("1개 이하의 자동차 이름으로 자동차 세트를 생성하면 예외를 발생한다.")
+    void constructorException(String input) {
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Cars(input))
+                .withMessageMatching("유효한 이름으로 2개 이상 입력해야 합니다.");
     }
 
     @Test
