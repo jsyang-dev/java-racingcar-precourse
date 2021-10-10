@@ -16,6 +16,7 @@ public class RacingGameController {
     }
 
     public void run() {
+        ConsoleView.newLine();
         ConsoleView.printMessage(PRINT_HEADER);
         Winners winners = racingGame.run();
         winners.printResult();

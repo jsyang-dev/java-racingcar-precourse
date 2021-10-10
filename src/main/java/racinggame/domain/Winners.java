@@ -1,10 +1,14 @@
 package racinggame.domain;
 
+import racinggame.ui.ConsoleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
-    
+
+    private static final String DELIMITER = ",";
+
     private final List<Car> cars;
 
     public Winners(List<Car> candidateCars) {
@@ -25,6 +29,7 @@ public class Winners {
     }
 
     public void printResult() {
+        ConsoleView.printMessage("최종 우승자는 %s 입니다.", getNames());
     }
 
     private void findWinners(List<Car> candidateCars) {
@@ -50,5 +55,13 @@ public class Winners {
         if (candidateCar.isAheadPosition(this)) {
             cars.clear();
         }
+    }
+
+    private String getNames() {
+        StringBuilder names = new StringBuilder();
+        for (Car car : cars) {
+            names.append(car.getCarName()).append(DELIMITER);
+        }
+        return names.substring(0, names.length() - 1);
     }
 }

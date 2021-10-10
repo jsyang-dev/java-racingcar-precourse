@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.ui.ConsoleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,9 @@ public class Cars {
     public void action() {
         for (Car car : cars) {
             car.action(CarAction.getActionType());
+            printProgress(car);
         }
+        ConsoleView.newLine();
     }
 
     private void verifyNames(String names) {
@@ -44,5 +48,17 @@ public class Cars {
             cars.add(new Car(name));
         }
         return cars;
+    }
+
+    private void printProgress(Car car) {
+        ConsoleView.printMessage("%s : %s%n", car.getCarName(), getProgress(car));
+    }
+
+    private String getProgress(Car car) {
+        StringBuilder progress = new StringBuilder();
+        for (int i = 0; i < car.getCarPosition(); i++) {
+            progress.append("-");
+        }
+        return progress.toString();
     }
 }
