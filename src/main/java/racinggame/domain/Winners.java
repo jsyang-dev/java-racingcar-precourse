@@ -24,6 +24,9 @@ public class Winners {
         return cars.get(0).getCarPosition();
     }
 
+    public void printResult() {
+    }
+
     private void findWinners(List<Car> candidateCars) {
         for (Car candidateCar : candidateCars) {
             addCandidate(candidateCar);

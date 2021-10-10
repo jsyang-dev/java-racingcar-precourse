@@ -3,13 +3,22 @@ package racinggame.ui;
 import racinggame.domain.AttemptCount;
 import racinggame.domain.Cars;
 import racinggame.domain.RacingGame;
+import racinggame.domain.Winners;
 
 public class RacingGameController {
+
+    private static final String PRINT_HEADER = "실행 결과";
 
     private final RacingGame racingGame;
 
     public RacingGameController() {
         racingGame = new RacingGame(getCars(), getAttemptCount());
+    }
+
+    public void run() {
+        ConsoleView.printMessage(PRINT_HEADER);
+        Winners winners = racingGame.run();
+        winners.printResult();
     }
 
     private Cars getCars() {

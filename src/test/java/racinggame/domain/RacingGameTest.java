@@ -41,8 +41,8 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("경주 게임을 시작한다.")
-    void start() {
+    @DisplayName("경주 게임을 실행한다.")
+    void run() {
         // given
         Cars mockCars = Mockito.mock(Cars.class);
         Car car = new Car("car1");
@@ -52,7 +52,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(mockCars, new AttemptCount(count));
 
         // when
-        Winners winners = racingGame.start();
+        Winners winners = racingGame.run();
 
         // then
         assertAll(

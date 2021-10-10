@@ -10,7 +10,7 @@ public class RacingGame {
         this.attemptCount = attemptCount;
     }
 
-    public Winners start() {
+    public Winners run() {
         actions(cars);
         return cars.getWinners();
     }
