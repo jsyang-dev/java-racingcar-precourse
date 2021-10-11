@@ -12,7 +12,7 @@ public class Winners {
     private final List<Car> cars;
 
     public Winners(List<Car> candidateCars) {
-        cars = new ArrayList<>();
+        this.cars = new ArrayList<>();
         findWinners(candidateCars);
     }
 
@@ -62,6 +62,10 @@ public class Winners {
         for (Car car : cars) {
             names.append(car.getCarName()).append(DELIMITER);
         }
+        return removeLastDelimiter(names);
+    }
+
+    private String removeLastDelimiter(StringBuilder names) {
         return names.substring(0, names.length() - 1);
     }
 }

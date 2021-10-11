@@ -8,11 +8,7 @@ public class CarPosition {
         return position;
     }
 
-    public void moveForward() {
-        position++;
-    }
-
     public void action(ActionType actionType) {
-        position += actionType.getMove();
+        position += actionType.getDistance();
     }
 }

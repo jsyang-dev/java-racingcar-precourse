@@ -5,6 +5,8 @@ import racinggame.domain.Cars;
 import racinggame.domain.RacingGame;
 import racinggame.domain.Winners;
 
+import java.util.Objects;
+
 public class RacingGameController {
 
     private final RacingGame racingGame;
@@ -22,7 +24,7 @@ public class RacingGameController {
 
     private Cars getCars() {
         Cars cars = null;
-        while (cars == null) {
+        while (Objects.isNull(cars)) {
             cars = inputCars();
         }
         return cars;
@@ -40,7 +42,7 @@ public class RacingGameController {
 
     private AttemptCount getAttemptCount() {
         AttemptCount attemptCount = null;
-        while (attemptCount == null) {
+        while (Objects.isNull(attemptCount)) {
             attemptCount = inputAttemptCount();
         }
         return attemptCount;
@@ -58,8 +60,12 @@ public class RacingGameController {
     }
 
     private void checkNumber(String count) {
-        if (!count.matches("[0-9]+")) {
+        if (isNotPositiveNumber(count)) {
             throw new IllegalArgumentException(ConsoleMessage.ATTEMPT_COUNT_ERROR.getMessage());
         }
+    }
+
+    private boolean isNotPositiveNumber(String count) {
+        return !count.matches("[0-9]+");
     }
 }

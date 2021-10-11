@@ -9,7 +9,7 @@ public class CarName {
 
     public CarName(String name) {
         String trimmedName = name.trim();
-        checkLength(trimmedName);
+        verifyName(trimmedName);
         this.name = trimmedName;
     }
 
@@ -17,7 +17,7 @@ public class CarName {
         return name;
     }
 
-    private void checkLength(String name) {
+    private void verifyName(String name) {
         if (isAvailable(name)) {
             throw new IllegalArgumentException(Message.CAR_NAME_ERROR.getMessage());
         }

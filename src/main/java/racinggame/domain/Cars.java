@@ -8,6 +8,7 @@ import java.util.List;
 public class Cars {
 
     private static final String DELIMITER = ",";
+    private static final String PROGRESS_BAR = "-";
 
     private final List<Car> cars;
 
@@ -37,9 +38,13 @@ public class Cars {
     }
 
     private void verifyNames(String names) {
-        if (!names.matches("([\\w]+,)*([\\w]+,[\\w]+)")) {
+        if (isCommaSeparatedName(names)) {
             throw new IllegalArgumentException(Message.CARS_ERROR.getMessage());
         }
+    }
+
+    private boolean isCommaSeparatedName(String names) {
+        return !names.matches("([\\w]+,)*([\\w]+,[\\w]+)");
     }
 
     private List<Car> mapCars(String nameText) {
@@ -57,7 +62,7 @@ public class Cars {
     private String getProgress(Car car) {
         StringBuilder progress = new StringBuilder();
         for (int i = 0; i < car.getCarPosition(); i++) {
-            progress.append("-");
+            progress.append(PROGRESS_BAR);
         }
         return progress.toString();
     }

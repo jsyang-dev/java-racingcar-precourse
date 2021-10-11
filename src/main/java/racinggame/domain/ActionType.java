@@ -4,13 +4,13 @@ public enum ActionType {
 
     FORWARD(1), STOP(0);
 
-    private final int move;
+    private final int distance;
 
-    ActionType(int move) {
-        this.move = move;
+    ActionType(int distance) {
+        this.distance = distance;
     }
 
-    public int getMove() {
-        return move;
+    public int getDistance() {
+        return distance;
     }
 }
