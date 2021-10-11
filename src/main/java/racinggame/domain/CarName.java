@@ -19,7 +19,7 @@ public class CarName {
 
     private void checkLength(String name) {
         if (isAvailable(name)) {
-            throw new IllegalArgumentException("자동차 이름은 공백을 제외한 1자 이상, 5자 이하로 입력해야 합니다.");
+            throw new IllegalArgumentException(Message.CAR_NAME_ERROR.getMessage());
         }
     }
 

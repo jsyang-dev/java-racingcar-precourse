@@ -37,7 +37,7 @@ class RacingGameTest {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new RacingGame(cars, new AttemptCount(0)))
-                .withMessageMatching("시도 횟수는 1 이상으로 입력해야 합니다.");
+                .withMessageMatching(Message.ATTEMPT_COUNT_ERROR.getMessage());
     }
 
     @Test

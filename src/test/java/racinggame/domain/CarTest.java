@@ -32,7 +32,7 @@ class CarTest {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Car(input))
-                .withMessageMatching("자동차 이름은 공백을 제외한 1자 이상, 5자 이하로 입력해야 합니다.");
+                .withMessageMatching(Message.CAR_NAME_ERROR.getMessage());
     }
 
     @Test

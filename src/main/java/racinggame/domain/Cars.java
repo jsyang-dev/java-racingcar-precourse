@@ -38,7 +38,7 @@ public class Cars {
 
     private void verifyNames(String names) {
         if (!names.matches("([\\w]+,)*([\\w]+,[\\w]+)")) {
-            throw new IllegalArgumentException("유효한 이름으로 2개 이상 입력해야 합니다.");
+            throw new IllegalArgumentException(Message.CARS_ERROR.getMessage());
         }
     }
 

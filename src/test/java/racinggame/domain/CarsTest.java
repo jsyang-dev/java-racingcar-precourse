@@ -35,7 +35,7 @@ class CarsTest {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Cars(input))
-                .withMessageMatching("유효한 이름으로 2개 이상 입력해야 합니다.");
+                .withMessageMatching(Message.CARS_ERROR.getMessage());
     }
 
     @Test

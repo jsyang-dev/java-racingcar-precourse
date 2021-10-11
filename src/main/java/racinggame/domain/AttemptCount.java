@@ -17,7 +17,7 @@ public class AttemptCount {
 
     private void checkValue(int value) {
         if (isAvailable(value)) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상으로 입력해야 합니다.");
+            throw new IllegalArgumentException(Message.ATTEMPT_COUNT_ERROR.getMessage());
         }
     }
 

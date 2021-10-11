@@ -11,12 +11,17 @@ public class ConsoleView {
         return Console.readLine();
     }
 
-    public static void printMessage(String message) {
-        System.out.println(message);
+    public static String input(ConsoleMessage consoleMessage) {
+        System.out.println(consoleMessage.getMessage());
+        return Console.readLine();
     }
 
     public static void printMessage(String message, Object... args) {
         System.out.printf(message, args);
+    }
+
+    public static void printMessage(ConsoleMessage consoleMessage) {
+        System.out.println(consoleMessage.getMessage());
     }
 
     public static void printErrorMessage(IllegalArgumentException e) {

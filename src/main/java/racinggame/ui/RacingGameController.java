@@ -7,8 +7,6 @@ import racinggame.domain.Winners;
 
 public class RacingGameController {
 
-    private static final String PRINT_HEADER = "실행 결과";
-
     private final RacingGame racingGame;
 
     public RacingGameController() {
@@ -17,7 +15,7 @@ public class RacingGameController {
 
     public void run() {
         ConsoleView.newLine();
-        ConsoleView.printMessage(PRINT_HEADER);
+        ConsoleView.printMessage(ConsoleMessage.RESULT_HEADER);
         Winners winners = racingGame.run();
         winners.printResult();
     }
@@ -32,7 +30,7 @@ public class RacingGameController {
 
     private Cars inputCars() {
         try {
-            String carNames = ConsoleView.input("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            String carNames = ConsoleView.input(ConsoleMessage.CAR_NAMES_INPUT);
             return new Cars(carNames);
         } catch (IllegalArgumentException e) {
             ConsoleView.printErrorMessage(e);
@@ -50,7 +48,7 @@ public class RacingGameController {
 
     private AttemptCount inputAttemptCount() {
         try {
-            String count = ConsoleView.input("시도할 회수는 몇회인가요?");
+            String count = ConsoleView.input(ConsoleMessage.ATTEMPT_COUNT_INPUT);
             checkNumber(count);
             return new AttemptCount(Integer.parseInt(count));
         } catch (IllegalArgumentException e) {
@@ -61,7 +59,7 @@ public class RacingGameController {
 
     private void checkNumber(String count) {
         if (!count.matches("[0-9]+")) {
-            throw new IllegalArgumentException("양수인 숫자만 입력해야 합니다.");
+            throw new IllegalArgumentException(ConsoleMessage.ATTEMPT_COUNT_ERROR.getMessage());
         }
     }
 }

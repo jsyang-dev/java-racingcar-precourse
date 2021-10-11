@@ -29,7 +29,7 @@ public class Winners {
     }
 
     public void printResult() {
-        ConsoleView.printMessage("최종 우승자는 %s 입니다.", getNames());
+        ConsoleView.printMessage(Message.WINNERS_RESULT.getMessage(), getNames());
     }
 
     private void findWinners(List<Car> candidateCars) {
