@@ -31,11 +31,20 @@ class CarsTest {
     @CustomParameterizedTest
     @ValueSource(strings = {" ", ",", "car1,", ",car1"})
     @DisplayName("1개 이하의 자동차 이름으로 자동차 세트를 생성하면 예외를 발생한다.")
-    void constructorException(String input) {
+    void constructorException1(String input) {
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Cars(input))
-                .withMessageMatching(Message.CARS_ERROR.getMessage());
+                .withMessageMatching(Message.CARS_INVALID_NAMES_ERROR.getMessage());
+    }
+
+    @Test
+    @DisplayName("동일한 이름으로 자동차 세트를 생성하면 예외를 발생한다.")
+    void constructorException2() {
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Cars("car1,car1"))
+                .withMessageMatching(Message.CARS_DUPLICATED_NAMES_ERROR.getMessage());
     }
 
     @Test

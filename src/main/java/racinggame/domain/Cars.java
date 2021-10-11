@@ -3,7 +3,9 @@ package racinggame.domain;
 import racinggame.ui.ConsoleView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
 
@@ -38,19 +40,31 @@ public class Cars {
     }
 
     private void verifyNames(String names) {
-        if (isCommaSeparatedName(names)) {
-            throw new IllegalArgumentException(Message.CARS_ERROR.getMessage());
+        if (isNotCommaSeparatedNames(names)) {
+            throw new IllegalArgumentException(Message.CARS_INVALID_NAMES_ERROR.getMessage());
+        }
+        if (isDuplicatedNames(names)) {
+            throw new IllegalArgumentException(Message.CARS_DUPLICATED_NAMES_ERROR.getMessage());
         }
     }
 
-    private boolean isCommaSeparatedName(String names) {
+    private boolean isNotCommaSeparatedNames(String names) {
         return !names.matches("([\\w]+,)*([\\w]+,[\\w]+)");
     }
 
-    private List<Car> mapCars(String nameText) {
+    private boolean isDuplicatedNames(String names) {
+        String[] allNames = names.split(DELIMITER);
+        Set<String> uniqueNames = new HashSet<>();
+        for (String name : allNames) {
+            uniqueNames.add(name.trim());
+        }
+        return allNames.length != uniqueNames.size();
+    }
+
+    private List<Car> mapCars(String names) {
         List<Car> cars = new ArrayList<>();
-        for (String name : nameText.split(DELIMITER)) {
-            cars.add(new Car(name));
+        for (String name : names.split(DELIMITER)) {
+            cars.add(new Car(name.trim()));
         }
         return cars;
     }
